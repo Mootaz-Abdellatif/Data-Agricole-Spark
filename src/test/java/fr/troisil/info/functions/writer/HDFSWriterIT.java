@@ -68,6 +68,7 @@ public class HDFSWriterIT {
                 .getString("app.data.output.path"));
         Dataset<Row> ds = new DataAgricoleReader(sparkSession, inputPathStr).get();
         writer.accept(ds);
+        log.info("writing into hdfs");
         //assertThat(Files.exists(Paths.get(ConfigFactory.load("application.conf").getString("app.data.output.path")))).isFalse();
         assertThat(ds.rdd().isEmpty()).isFalse();
         assertThat(hdfs.exists(inputPath)).isTrue();
