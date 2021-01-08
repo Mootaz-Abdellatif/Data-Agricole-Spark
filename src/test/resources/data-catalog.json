@@ -18,7 +18,7 @@
     "MONTANT_TOTAL": {
       "cf": "commune",
       "col": "MONTANT_TOTAL",
-      "type": "string"
+      "type": "double"
     },
     "NOM_PRENOM_OU_RAISON_SOCIALE": {
       "cf": "commune",

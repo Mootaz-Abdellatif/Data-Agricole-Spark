@@ -58,13 +58,17 @@ public class MainStreaming
                         StructType schema = new StructType(new StructField[]{
                                 new StructField("key", DataTypes.StringType, true, md),
                                 new StructField("LIBELLE_DE_LA_COMMUNE_DE_RESIDENCE", DataTypes.StringType, true, md),
-                                new StructField("MONTANT_TOTAL", DataTypes.StringType, true, md),
+                                new StructField("MONTANT_TOTAL", DataTypes.DoubleType, true, md),
                                 new StructField("NOM_PRENOM_OU_RAISON_SOCIALE", DataTypes.StringType, true, md)
                         }
                         );
                         JavaRDD<Row> rowRDD = stringJavaRDD.map(str -> {
                             String[] fields = str.split(":", 4);
-                            return RowFactory.create(fields[0], fields[1], fields[2], fields[3]);
+                            return RowFactory.create(
+                                    fields[0],
+                                    fields[1],
+                                    Double.parseDouble(fields[2]),
+                                    fields[3]);
                         });
                         Dataset<Row> raw2 = sparkSession.createDataFrame(rowRDD, schema);
 

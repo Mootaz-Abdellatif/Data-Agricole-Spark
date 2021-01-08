@@ -35,8 +35,8 @@ public class HiveWriterIT {
                 .getOrCreate();
 
         List<HBaseRow> expected = Arrays.asList(
-                HBaseRow.builder().key("k1").MONTANT_TOTAL("56").LIBELLE_DE_LA_COMMUNE_DE_RESIDENCE("PREMONT").NOM_PRENOM_OU_RAISON_SOCIALE("GAEC PARTIEL DE LA MALADRERIE").build(),
-                HBaseRow.builder().key("k2").MONTANT_TOTAL("26").LIBELLE_DE_LA_COMMUNE_DE_RESIDENCE("CHAPELLE MONTHODON").NOM_PRENOM_OU_RAISON_SOCIALE("SCL ROULOT VEROT").build()
+                HBaseRow.builder().key("k1").MONTANT_TOTAL(56.0).LIBELLE_DE_LA_COMMUNE_DE_RESIDENCE("PREMONT").NOM_PRENOM_OU_RAISON_SOCIALE("GAEC PARTIEL DE LA MALADRERIE").build(),
+                HBaseRow.builder().key("k2").MONTANT_TOTAL(26.0).LIBELLE_DE_LA_COMMUNE_DE_RESIDENCE("CHAPELLE MONTHODON").NOM_PRENOM_OU_RAISON_SOCIALE("SCL ROULOT VEROT").build()
         );
 
         Dataset<Row> expectedData = sparkSession.createDataset(expected, Encoders.bean(HBaseRow.class)).toDF();
@@ -60,7 +60,7 @@ public class HiveWriterIT {
     @Data @Builder @AllArgsConstructor @NoArgsConstructor
     public static class HBaseRow implements Serializable {
         private String key;
-        private String MONTANT_TOTAL;
+        private Double MONTANT_TOTAL;
         private String LIBELLE_DE_LA_COMMUNE_DE_RESIDENCE;
         private String NOM_PRENOM_OU_RAISON_SOCIALE;
     }
