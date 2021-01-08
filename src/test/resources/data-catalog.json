@@ -1,0 +1,29 @@
+{
+  "table": {
+    "namespace": "dataAgricole",
+    "name": "data"
+  },
+  "rowkey": "key",
+  "columns": {
+    "key": {
+      "cf": "rowkey",
+      "col": "key",
+      "type": "string"
+    },
+    "LIBELLE_DE_LA_COMMUNE_DE_RESIDENCE": {
+      "cf": "commune",
+      "col": "LIBELLE_DE_LA_COMMUNE_DE_RESIDENCE",
+      "type": "string"
+    },
+    "MONTANT_TOTAL": {
+      "cf": "commune",
+      "col": "MONTANT_TOTAL",
+      "type": "string"
+    },
+    "NOM_PRENOM_OU_RAISON_SOCIALE": {
+      "cf": "commune",
+      "col": "NOM_PRENOM_OU_RAISON_SOCIALE",
+      "type": "string"
+    }
+  }
+}
